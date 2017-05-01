@@ -1,0 +1,92 @@
+//
+//  SBSDKCropViewController.h
+//  SnapIos
+//
+//  Created by Sebastian Husche on 09.07.13.
+//  Copyright (c) 2014 doo GmbH. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@class SBSDKPolygon;
+@class SBSDKCropViewController;
+
+/**
+ * A delegate protocol to inform an object about changes in SBSDKCropViewController.
+ */
+@protocol SBSDKCropViewControllerDelegate <NSObject>
+@required
+
+/**
+ * Informs the delegate that the crop view controllers apply button was hit.
+ * @param cropViewController The calling SBSDKCropViewController.
+ * @param polygon The current polygon of the SBSDKCropViewController.
+ * @param croppedImage The cropped image.
+ */
+- (void)cropViewController:(nonnull SBSDKCropViewController *)cropViewController
+didApplyChangesWithPolygon:(nonnull SBSDKPolygon *)polygon
+              croppedImage:(nonnull UIImage *)croppedImage;
+
+
+/**
+ * Informs the delegate that the crop view controllers cancel button was hit.
+ * @param cropViewController The calling SBSDKCropViewController.
+ */
+- (void)cropViewControllerDidCancelChanges:(nonnull SBSDKCropViewController *)cropViewController;
+
+@optional
+
+/**
+ * Asks the delegate for the cancel buttons icon.
+ * @param cropViewController The calling SBSDKCropViewController.
+ * @return An image used for the cancel button.
+ */
+- (nonnull UIImage *)cancelButtonImageForCropViewController:(nonnull SBSDKCropViewController *)cropViewController;
+
+/**
+ * Asks the delegate for the apply buttons icon.
+ * @param cropViewController The calling SBSDKCropViewController.
+ * @return An image used for the apply button.
+ */
+- (nonnull UIImage *)applyButtonImageForCropViewController:(nonnull SBSDKCropViewController *)cropViewController;
+
+@end
+
+/**
+ * @class SBSDKCropViewController
+ * UIViewController subclass showing an image and a polygon The user can move edge and corner handles to redefine the
+ * polygon manually.
+ * This class cannot be instanced from a storyboard.
+ * Instead it is installing itself as a child view controller onto a given parent view controller.
+ */
+@interface SBSDKCropViewController : UIViewController
+
+/** The uncropped input image. **/
+@property(nonatomic, strong, nonnull) UIImage *image;
+
+/** The current polygon. **/
+@property(nonatomic, copy, nonnull) SBSDKPolygon *polygon;
+
+/** The rendered color of unsnapped edges. **/
+@property(nonatomic, strong, nonnull) UIColor *edgeColor;
+
+/** The rendered color of magnetically snapped edges. **/
+@property(nonatomic, strong, nonnull) UIColor *magneticEdgeColor;
+
+/** Cropped image as result of applying polygon to image. **/
+@property(nonatomic, readonly, nonnull) UIImage *croppedImage;
+
+/** Delegate for result callback methods. **/
+@property(nonatomic, weak, nullable) id<SBSDKCropViewControllerDelegate> delegate;
+
+/**
+ * Desginated initializer. Installs the receiver as child view controller onto the parent view controllers
+ * view using its entire bounds area.
+ * @param parentViewController The view controller the newly created instance is embedded into.
+ * @param container The view to embed the receivers view into. Must be a descendant of parentViewControllers view.
+ */
+- (nonnull instancetype)initWithParentViewController:(nonnull UIViewController *)parentViewController
+                                       containerView:(nonnull UIView *)container;
+
+@end
+
