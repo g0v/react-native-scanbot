@@ -122,7 +122,7 @@
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
-				025821221EB74A2400FCD9ED /* ShellScript */,
+				025821221EB74A2400FCD9ED /* Run SBSDK Script */,
 				0258212E1EB74A7A00FCD9ED /* Resources */,
 			);
 			buildRules = (
@@ -185,19 +185,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		025821221EB74A2400FCD9ED /* ShellScript */ = {
+		025821221EB74A2400FCD9ED /* Run SBSDK Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/./ScanbotSDK/ScanbotSDK.framework.dSYM",
 			);
+			name = "Run SBSDK Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "bash \"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/ScanbotSDK.framework/strip-SBSDK-Framework.sh\"";
+			shellScript = "bash \"$SRCROOT/ScanbotSDK/ScanbotSDK.framework/strip-SBSDK-Framework.sh\" \"$SRCROOT/ScanbotSDK\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
