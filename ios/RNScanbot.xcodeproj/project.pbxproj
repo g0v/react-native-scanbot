@@ -17,6 +17,7 @@
 		025821421EB74AE800FCD9ED /* osd.traineddata in Resources */ = {isa = PBXBuildFile; fileRef = 0258213C1EB74AE800FCD9ED /* osd.traineddata */; };
 		025821431EB74AE800FCD9ED /* pdf.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0258213D1EB74AE800FCD9ED /* pdf.ttf */; };
 		025821441EB74AE800FCD9ED /* pdf.ttx in Resources */ = {isa = PBXBuildFile; fileRef = 0258213E1EB74AE800FCD9ED /* pdf.ttx */; };
+		02E37E271EFFEEE4009F0E5F /* RNScanbotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E37E261EFFEEE4009F0E5F /* RNScanbotViewController.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RNScanbot.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNScanbot.m */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,8 @@
 		0258213C1EB74AE800FCD9ED /* osd.traineddata */ = {isa = PBXFileReference; lastKnownFileType = file; path = osd.traineddata; sourceTree = "<group>"; };
 		0258213D1EB74AE800FCD9ED /* pdf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pdf.ttf; sourceTree = "<group>"; };
 		0258213E1EB74AE800FCD9ED /* pdf.ttx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = pdf.ttx; sourceTree = "<group>"; };
+		02E37E251EFFEEDD009F0E5F /* RNScanbotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNScanbotViewController.h; sourceTree = "<group>"; };
+		02E37E261EFFEEE4009F0E5F /* RNScanbotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNScanbotViewController.m; sourceTree = "<group>"; };
 		134814201AA4EA6300B7C361 /* libRNScanbot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNScanbot.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3E7B5881CC2AC0600A0062D /* RNScanbot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNScanbot.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNScanbot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNScanbot.m; sourceTree = "<group>"; };
@@ -107,6 +110,8 @@
 				025821231EB74A5200FCD9ED /* AdditionalData */,
 				B3E7B5881CC2AC0600A0062D /* RNScanbot.h */,
 				B3E7B5891CC2AC0600A0062D /* RNScanbot.m */,
+				02E37E251EFFEEDD009F0E5F /* RNScanbotViewController.h */,
+				02E37E261EFFEEE4009F0E5F /* RNScanbotViewController.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				0258211F1EB749FA00FCD9ED /* Frameworks */,
 			);
@@ -207,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3E7B58A1CC2AC0600A0062D /* RNScanbot.m in Sources */,
+				02E37E271EFFEEE4009F0E5F /* RNScanbotViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import Scanbot from 'react-native-scanbot';
 
 const styles = StyleSheet.create({
@@ -10,11 +10,27 @@ const styles = StyleSheet.create({
   },
 });
 
+Scanbot.setLicense('');
+
 export default class example extends Component {
+
+  state = {
+    image: '',
+  }
+
+  onPress = async () => {
+    const image = await Scanbot.scan({});
+    this.setState({ image: `data:image/jpeg;base64,${image}` });
+  }
+
   render() {
+    const { image } = this.state;
     return (
       <View style={styles.viewport}>
-        <Text>Hello Scanbot v{Scanbot.version}</Text>
+        <Image style={{ flex: 1 }} source={{ uri: image }} />
+        <TouchableOpacity style={{ padding: 10, margin: 5, alignItems: 'center', borderWidth: StyleSheet.hairlineWidth }} onPress={this.onPress}>
+          <Text>Open Scanbot</Text>
+        </TouchableOpacity>
       </View>
     );
   }
