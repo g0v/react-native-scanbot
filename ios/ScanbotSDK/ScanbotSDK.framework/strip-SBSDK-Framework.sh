@@ -1,11 +1,11 @@
-##  Copyright (c) 2016 doo GmbH. All rights reserved.
+#  Copyright (c) 2016 doo GmbH. All rights reserved.
 
 function sbsdkecho {
     echo "[ScanbotSDK] $1"
 }
 
 function codeSignIfNeeded {
-    if [ "$CODE_SIGNING_REQUIRED" == "YES" ] && [ ! -z "$EXPANDED_CODE_SIGN_IDENTITY" ]; then
+    if [ "$CODE_SIGNING_REQUIRED" == "YES" ]; then
             sbsdkecho "Code signing $1 using identity \"$EXPANDED_CODE_SIGN_IDENTITY_NAME\""
             /usr/bin/codesign --force --sign "$EXPANDED_CODE_SIGN_IDENTITY" --preserve-metadata=identifier,entitlements "$1"
     fi
@@ -45,7 +45,7 @@ function processDebugSymbols {
             sbsdkecho "dSYM folder doesn't contain binary: $symbolsSourcePath"
             exit 2
         fi
-
+        
         symbolsTargetPath=$(basename "$symbolsSourcePath")
         sbsdkecho "Copying dSYMs to $BUILT_PRODUCTS_DIR/$symbolsTargetPath"
         if [ ! -d "$BUILT_PRODUCTS_DIR/$symbolsTargetPath" ]; then
@@ -58,10 +58,9 @@ function processDebugSymbols {
 function runScript {
     frameworkFolder=$1
     frameworkBinary="$frameworkFolder/ScanbotSDK"
-    sbsdkecho "Framework binary path $frameworkBinary"
     processFiles "$frameworkFolder"
     strippedArchitectures=$(stripBinary "$frameworkBinary")
-
+    
     if [[ -n "$strippedArchitectures" ]]; then
         sbsdkecho "Removed architectures from ScanbotSDK framework: $strippedArchitectures"
         codeSignIfNeeded "$frameworkBinary"
@@ -69,8 +68,6 @@ function runScript {
     processDebugSymbols
 }
 
-cd "$BUILT_PRODUCTS_DIR"
+cd "$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH"
 folder="./ScanbotSDK.framework"
-cp -r "$1/$folder" "$BUILT_PRODUCTS_DIR"
-cp -r "$1/$folder.dSYM" "$BUILT_PRODUCTS_DIR"
 runScript "$folder"
