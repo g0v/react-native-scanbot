@@ -16,7 +16,7 @@ public class RNScanbotPackage implements ReactPackage {
       return Arrays.<NativeModule>asList(new RNScanbotModule(reactContext));
     }
 
-    @Override
+    // Deprecated RN 0.47
     public List<Class<? extends JavaScriptModule>> createJSModules() {
       return Collections.emptyList();
     }
